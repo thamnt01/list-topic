@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center my-5">List of account</h1>
+    <a href="#" routerLink="/topic/create" class="btn btn-success mb-5">Create new topic</a>
+    <button type="button" (click)="deleteAllTopic()" class="btn btn-danger float-end">Delete All</button>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="searchByName()">Button</button>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Content</th>
+                <th>Gender</th>
+                <th>Adress</th>
+                <th>Create Day</th>
+                <th style="width: 200px;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let topic of topics">
+                <th>{{ topic.id }} </th>
+                <td>{{ topic.name }}</td>
+                <td>{{ topic.content }}</td>
+                <td>{{ topic.gender }}</td>
+                <td>{{ topic.address }}</td>
+                <td>{{ topic.createdAt }}</td>
+                <td class="">
+                    <a type="button" href="#" [routerLink]="['/topic/', topic.id, 'view']"
+                        class="btn-sm btn-info mx-1">View</a>
+                    <a type="button" href="#" [routerLink]="['/topic/', topic.id, 'edit']"
+                        class="btn-sm btn-primary mx-1">Edit</a>
+                    <a type="button" (click)="deleteTopic(topic.id)" class="btn-sm btn-danger mx-1">Delete</a>
+                    <input type="checkbox" aria-label="Checkbox for following text input">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

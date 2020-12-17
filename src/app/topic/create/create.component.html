@@ -1,0 +1,37 @@
+<div class="container">
+    <h1 class="text-center my-5">Ready to create an account</h1>
+    <a href="#" routerLink="/topic/index" class="btn btn-secondary">Back to list topic</a>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group mb-5">
+            <label for="title">Name: </label>
+            <input type="text" id="title" formControlName="name" class="form-control">
+            <div *ngIf="f.title.touched && f.title.invalid" class="alert alert-danger">
+                <div *ngIf="f.title.errors.required">
+                    Name is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="body">Gender: </label>
+            <select name="gender" id="gender" class="form-control">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+            <!-- <textarea formControlName="content" id="body" type="text" class="form-control"></textarea>
+            <div *ngIf="f.body.touched && f.body.invalid" class="alert alert-danger">
+                <div *ngIf="f.body.errors.required">
+                    Content is required
+                </div>
+            </div> -->
+        </div>
+        <div class="form-group mb-3">
+            <label for="body">Content: </label>
+            <textarea formControlName="content" id="body" type="text" class="form-control"></textarea>
+            <div *ngIf="f.body.touched && f.body.invalid" class="alert alert-danger">
+                <div *ngIf="f.body.errors.required">
+                    Content is required
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
